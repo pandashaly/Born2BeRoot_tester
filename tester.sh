@@ -81,6 +81,31 @@ fi
 
 echo -e "${VIOLET}Bonus Partitions:${NC}\n"
 
+RES=$(lsblk | grep var | wc -l)
+if [ $RES -gt 0 ];then
+  echo -e "${GREEN}[OK] ✔${GRAY} var${NC}\n"
+else
+	echo -e "${RED}[KO] ✗${GRAY} no var partition${NC}\n"
+fi
+RES=$(lsblk | grep srv | wc -l)
+if [ $RES -gt 0 ];then
+	echo -e "${GREEN}[OK] ✔${GRAY} srv${NC}\n"
+else
+	echo -e "${RED}[KO] ✗${GRAY} no srv partition${NC}\n"
+fi
+RES=$(lsblk | grep tmp | wc -l)
+if [ $RES -gt 0 ];then
+	echo -e "${GREEN}[OK] ✔${GRAY} tmp${NC}\n"
+else
+	echo -e "${RED}[KO] ✗${GRAY} no tmp partition${NC}\n"
+fi
+RES=$(lsblk | grep var--log | wc -l)
+if [ $RES -gt 0 ];then
+	echo -e "${GREEN}[OK] ✔${GRAY} var--log${NC}\n"
+else
+	echo -e "${RED}[KO] ✗${GRAY} no var--log${NC}\n"
+fi
+
 lsblk
 
 echo -e "${GRAY}==================================================================${NC}\n"
