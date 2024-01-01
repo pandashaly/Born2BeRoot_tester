@@ -112,6 +112,9 @@ echo -e "${GRAY}================================================================
 
 echo -e "${VIOLET}UFW Check:${NC}\n"
 
+echo -e "${CYAN}What is UFW? - Why is it important?${NC}\n"
+echo -e "${GRAY}Add new rule to open port 8080. \n List active rules\n Delete port 8080${NC}\n"
+
 RES=$(sudo ufw status | grep -v ALLOW | grep active | wc -l)
 if [ $RES -gt 0 ];then
         echo -e "${GREEN}YAY! Ufw is active. OK ✔${NC}\n"
@@ -134,15 +137,31 @@ echo -e "${GRAY}================================================================
 
 echo -e "${VIOLET}SSH Check:${NC}\n"
 
+echo -e "${CYAN}What is SSH and why is it important?${NC}\n"
+echo -e "${GRAY}Use SSH to connect with the new user created.${NC}\n"
+
+# Check if SSH is installed
+if [ -x "$(command -v ssh)" ]; then
+	echo -e "${GREEN}YAY! SSH is installed.${NC}\n"
+else
+	echo -e "${RED}UH-OH! SSH is not installed.${NC}\n"
+fi
+
+echo -e "${GRAY}SSH status check${NC}"
+if sudo service ssh status | grep -q "Active: active (running)"; then
+    echo -e "${GREEN}YAY! SSH service is running.${NC}\n"
+else
+    echo -e "${RED}UH-OH! SSH service is not running.${NC}\n"
+fi
+
+# Check SSH status and port
 echo -e "${GRAY}Ssh status${NC}"
-RES=$(sudo service ssh status | grep "Active: active (running)" | grep "4242" | wc -l)
+RES=$(sudo service ssh status | grep "Active: active (running)")
 if [[ $RES -eq 1 ]]; then
 	echo -e "${GREEN}YAY! SSH service is running on port 4242.${NC}\n"
 else
 	echo -e "${RED}UH-OH! SSH service is not running on port 4242.${NC}\n"
 fi
-
-sudo service ssh status
 
 # Check SSH root login
 echo -e "${GRAY}Root login check${NC}"
@@ -152,11 +171,14 @@ if [[ "$permit_root_login" == "no" ]]; then
 else
 	echo -e "${RED}UH-OH! Root login is enabled in SSH configuration.${NC}\n"
 fi
-
-cat /etc/ssh/sshd_config | grep -E '^#?PermitRootLogin'  # Display the PermitRootLogin line
+sudo service ssh status
+echo -e "${GRAY}==================================${NC}\n"
+# Display SSH Configuration
+echo -e "${GRAY}SSH Config:${NC}\n"
+cat /etc/ssh/sshd_config # | grep -E '^#?PermitRootLogin'  # Display the PermitRootLogin line
 
 echo -e "${GRAY}=====================================================================${NC}\n"
-group_name ="evaluating"
-user_name ="user42"
+# group_name ="evaluating"
+# user_name ="user42"
 
-sudo user
+# sudo user
