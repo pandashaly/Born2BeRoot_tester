@@ -34,7 +34,7 @@ echo -e "${GRAY}================================================================
 
 echo -e "${VIOLET}GUI MODE CHECK:        ${NC}\n"
 RES=$(ls /usr/bin/*session)
-if [[ $RES == "usr/bin/dbus-run-session" ]]; then
+if [[ $RES =~ "dbus-run-session" ]]; then
 	echo -e "${GREEN}YAY! GUI mode is disabled! OK ✔${NC}\n"
 else
 	echo -e "${RED}UH-OHH! GUI mode is enabled! KO ✗${NC}\n"
@@ -165,7 +165,7 @@ fi
 
 # Check SSH root login
 echo -e "${GRAY}Root login check${NC}"
-permit_root_login=$(sudo grep "PermitRootLogin" /etc/ssh/sshd_config | awk '{print $2}')
+permit_root_login=$(sudo grep "^PermitRootLogin" /etc/ssh/sshd_config | awk '{print $2}')
 if [[ "$permit_root_login" == "no" ]]; then
 	echo -e "${GREEN}YAY! Root login is disabled in SSH configuration.${NC}\n"
 else
