@@ -113,7 +113,7 @@ echo -e "${GRAY}================================================================
 echo -e "${VIOLET}UFW Check:${NC}\n"
 
 echo -e "${CYAN}What is UFW? - Why is it important?${NC}\n"
-echo -e "${GRAY}Add new rule to open port 8080. \n List active rules\n Delete port 8080${NC}\n"
+echo -e "${GRAY}Add new rule to open port 8080. \nList active rules\nDelete port 8080${NC}\n"
 
 RES=$(sudo ufw status | grep -v ALLOW | grep active | wc -l)
 if [ $RES -gt 0 ];then
@@ -147,7 +147,7 @@ else
 	echo -e "${RED}UH-OH! SSH is not installed.${NC}\n"
 fi
 
-echo -e "${GRAY}SSH status check${NC}"
+echo -e "${VIOLET}SSH status check${NC}"
 if sudo service ssh status | grep -q "Active: active (running)"; then
     echo -e "${GREEN}YAY! SSH service is running.${NC}\n"
 else
@@ -156,8 +156,8 @@ fi
 
 # Check SSH status and port
 echo -e "${GRAY}Ssh status${NC}"
-RES=$(sudo service ssh status | grep "Active: active (running)")
-if [[ $RES -eq 1 ]]; then
+RES=$(sudo lsof -i -P -n | grep sshd | grep LISTEN | grep 4242 | wc -l)
+if [ $RES -gt 1 ];then
 	echo -e "${GREEN}YAY! SSH service is running on port 4242.${NC}\n"
 else
 	echo -e "${RED}UH-OH! SSH service is not running on port 4242.${NC}\n"
