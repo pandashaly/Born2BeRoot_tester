@@ -17,17 +17,15 @@ USER=$(whoami)
 echo -e "${VIOLET}=^..^=   =^..^=   =^..^= ABOUT YOUR VM  =^..^=    =^..^=    =^..^=${NC}\n\n"
 
 echo -e "${VIOLET}What is a VM and what are the benefits of using VMs?\n${NC}"
-echo "\n"
 echo -e "${VIOLET}Why did you choose this OS?\n${NC}"
-echo "\n"
 echo -e "${VIOLET}What's the difference between the two OS's?\n${NC}"
-echo "\n"
 echo -e "${VIOLET}What's the difference between 'aptitude' and 'apt'?${NC}\n"
 
-echo -e "${VIOLET}=^..^=   =^..^=   =^..^= SIMPLE CONFIG  =^..^=    =^..^=    =^..^=${NC}\n\n"
+echo -e "${GRAY}=^..^=   =^..^=   =^..^= SIMPLE CONFIG  =^..^=    =^..^=    =^..^=${NC}\n"
+echo -e "${GRAY}==================================================================${NC}\n"
 
 echo -e "${VIOLET}       GUI MODE CHECK:        ${NC}\n"
-RES=$(ls/usr/bin*session)
+RES=$(ls /usr/bin/*session)
 if [[ $RES == "usr/bin/dbus-run-session" ]];then
 	echo -e "${GREEN}YAY! GUI mode is disabled! OK ✔${NC}\n"
 else
@@ -43,20 +41,18 @@ echo "\n"
 echo -e "${VIOLET}Chosen OS - Debian or Rocky:${NC}\n"
 lsb_release -a || cat /etc/os-release
 echo "\n"
+hostnamectl
 
-echo -e "${GRAY}=====================================================================${NC}\n"
+echo -e "${GRAY}==================================================================${NC}\n"
 
 echo -e "${VIOLET}UFW Check:${NC}\n"
 
-sudo ufw status
 RES=$(sudo ufw status | grep -v ALLOW | grep active | wc -l)
 if [ $RES -gt 0 ];then
-        echo -e "${GREEN}YAY! Active. OK ✔${NC}\n"
+        echo -e "${GREEN}YAY! Ufw is active. OK ✔${NC}\n"
   else
         echo -e "${RED}UH-OH! Not Active. KO ✗${NC}\n"
 fi
-
-echo "\n"
 
 RES=$(sudo ufw status | grep 4242 | wc -l)
 if [ $RES -gt 1 ];then
@@ -65,11 +61,15 @@ if [ $RES -gt 1 ];then
         echo -e "${RED}UH-OH! Port 4242 is closed! KO ✗${NC}\n"
 fi
 
-echo -e "${GRAY}=====================================================================${NC}\n"
+echo -e "${GRAY}Port 4545 is for the Bonus.${NC}\n"
+
+sudo ufw status
+
+echo -e "${GRAY}==================================================================${NC}\n"
 
 echo -e "${VIOLET}SSH Check:${NC}\n"
 
-sudo service ssh status
+echo -e "${GRAY}Ssh status${NC}"
 RES=$(sudo service ssh status | grep "Active: active (running)" | grep "4242" | wc -l)
 if [[ $RES -eq 1 ]]; then
 	echo -e "${GREEN}YAY! SSH service is running on port 4242.${NC}\n"
@@ -77,7 +77,10 @@ else
 	echo -e "${RED}UH-OH! SSH service is not running on port 4242.${NC}\n"
 fi
 
+sudo service ssh status
+
 # Check SSH root login
+echo -e "${GRAY}Root login check${NC}"
 permit_root_login=$(sudo grep "PermitRootLogin" /etc/ssh/sshd_config | awk '{print $2}')
 if [[ "$permit_root_login" == "no" ]]; then
 	echo -e "${GREEN}YAY! Root login is disabled in SSH configuration.${NC}\n"
@@ -85,9 +88,7 @@ else
 	echo -e "${RED}UH-OH! Root login is enabled in SSH configuration.${NC}\n"
 fi
 
-echo "\n"
 cat /etc/ssh/sshd_config | grep -E '^#?PermitRootLogin'  # Display the PermitRootLogin line
-echo "\n"
 
 echo -e "${GRAY}=====================================================================${NC}\n"
 group_name ="evaluating"
