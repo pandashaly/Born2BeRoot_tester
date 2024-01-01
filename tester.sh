@@ -14,7 +14,7 @@ echo -e "${CYAN}    ____                  ___   ____       ____              __ 
 echo -e "${CYAN}   / __ \____  _________ |__ \ / __ \___  / __ \____  ____  / /_${NC}"
 echo -e "${CYAN}  / __  / __ \/ ___/ __ \__/ // __  / _ \/ /_/ / __ \/ __ \/ __/${NC}"
 echo -e "${CYAN} / /_/ / /_/ / /  / / / / __// /_/ /  __/ _, _/ /_/ / /_/ / /_  ${NC}"
-echo -e "${CYAN}/_____/\____/_/  /_/ /_/____/_____/\___/_/ |_|\____/\____/\__/  by pandashaly${NC}\n"
+echo -e "${CYAN}/_____/\____/_/  /_/ /_/____/_____/\___/_/ |_|\____/\____/\__/  by pandashaly${NC}\n\n"
                                                                 
 
 # if [ $USER != "root" ];then
@@ -22,17 +22,17 @@ echo -e "${CYAN}/_____/\____/_/  /_/ /_/____/_____/\___/_/ |_|\____/\____/\__/  
 #	exit;
 #fi
 
-echo -e "${BLUE}=^..^=   =^..^=   =^..^= ABOUT YOUR VM  =^..^=    =^..^=    =^..^=${NC}\n\n"
+echo -e "${CYAN}=^..^=   =^..^=   =^..^= ABOUT YOUR VM  =^..^=    =^..^=    =^..^=${NC}\n"
 
 echo -e "${VIOLET}What is a VM and what are the benefits of using VMs?\n${NC}"
 echo -e "${VIOLET}Why did you choose this OS?\n${NC}"
 echo -e "${VIOLET}What's the difference between the two OS's?\n${NC}"
 echo -e "${VIOLET}What's the difference between 'aptitude' and 'apt'?${NC}\n"
 
-echo -e "${BLUE}=^..^=   =^..^=   =^..^= SIMPLE CONFIG  =^..^=    =^..^=    =^..^=${NC}\n"
+echo -e "${CYAN}=^..^=   =^..^=   =^..^=  =^..^=  =^..^=  =^..^=    =^..^=    =^..^=${NC}\n"
 echo -e "${GRAY}==================================================================${NC}\n"
 
-echo -e "${VIOLET}       GUI MODE CHECK:        ${NC}\n"
+echo -e "${VIOLET}GUI MODE CHECK:        ${NC}\n"
 RES=$(ls /usr/bin/*session)
 if [[ $RES == "usr/bin/dbus-run-session" ]]; then
 	echo -e "${GREEN}YAY! GUI mode is disabled! OK ✔${NC}\n"
@@ -42,12 +42,12 @@ fi
 
 echo -e "${GRAY}==================================================================${NC}\n"
 
-echo -e "${VIOLET}       PASSWORD CHECK & HOSTNAME:        ${NC}\n"
+echo -e "${VIOLET}PASSWORD CHECK & HOSTNAME:        ${NC}\n"
 sudo chage -l $USER
 
 echo -e "${GRAY}==================================================================${NC}\n"
 
-echo -e "${VIOLET}       VM SETUP && PARTITIONS:        ${NC}\n"
+echo -e "${VIOLET}VM SETUP && PARTITIONS:        ${NC}\n"
 echo -e "${VIOLET}Chosen OS - Debian or Rocky:${NC}\n"
 # lsb_release -a || cat /etc/os-release
 hostnamectl
