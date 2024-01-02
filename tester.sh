@@ -18,7 +18,7 @@ echo -e "${CYAN}/_____/\____/_/  /_/ /_/____/_____/\___/_/ |_|\____/\____/\__/  
                                                                 
 
 if [ $USER != "root" ];then
-echo -e "${RED}Opps! You don't have permission.\n Make sure you run the command with sudo permission - (sudo bash tester.sh)${RESET}\n";
+echo -e "${RED}Opps! You don't have permission.\nMake sure you run the command with sudo permission - (sudo bash tester.sh)${RESET}\n";
 exit;
 fi
 
@@ -247,13 +247,28 @@ echo -e "${GRAY}================================================================
 # user_name ="user42"
 
 # sudo user
+echo -e "${VIOLET}CHRON - Script Monitoring:${NC}\n"
+echo -e "${CYAN}What is cron?${NC}"
+echo -e "${GRAY}Change it so that it runs every minute.${NC}\n"
 
-# CHRON - Script monitoring
-# The operation of their script by displaying its code
-# What is cron
+RES=$(crontab -l | grep monitoring.sh | awk '$1 == "*/10" {print $1}')
+if [ $RES == "*/10" ];then
+	echo -e "${GREEN}YAY! Cron job frequency is set to every 10 minutes. ✔${NC}\n"
+else
+	echo -e "${RED}UH-OH! Cron job frequency is not set to every 10 minutes. ✗${NC}\n"
+fi
+
+echo -e "${GRAY}*Command: cat /usr/local/bin/monitoring.sh${NC}"
+cat /usr/local/bin/monitoring.sh
+echo
+echo -e "${GRAY}*Command: sudo crontab -l${NC}"
+echo -e "${GRAY}*To edit: sudo VISUAL=vim crontab -e${NC}"
+sudo crontab -l
+echo
+echo -e "${GRAY}=====================================================================${NC}\n"
 
 # How they have set up their script to execute every 10 minutes from server launch. Once the proper functioning of the script is verified, the evaluated person must make sure that this script executes every minute. You can launch whatever you wish to ensure that the script runs correctly with dynamic values. Finally, the evaluated person must ensure that the script no longer runs at server launch, without modifying the script itself. To verify this point, the server will need to be restarted one last time. At startup, it must be verified that the script still exists in the same place, that its permissions have remained unchanged, and that it has not been modified. If any of the above points are not correct, the evaluation stops here.
-
+echo -e "${GRAY}=====================================================================${NC}\n"
 # BONUS 
 # Partitions
 # Wordpress site
