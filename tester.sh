@@ -55,14 +55,16 @@ sudo chage -l $USER
 echo -e "${GRAY}==================================================================${NC}\n"
 
 echo -e "${VIOLET}VM SETUP && PARTITIONS:        ${NC}\n"
-echo -e "${VIOLET}Chosen OS - Debian or Rocky:${NC}\n"
+echo -e "${VIOLET}Chosen OS - Debian or Rocky:${NC}"
 # lsb_release -a || cat /etc/os-release
+echo -e "${GRAY}Command: hostnamectl${NC}"
 hostnamectl
+echo
 
 # Change this hostname by replacing the login with yours, then restart the machine. If upon restarting, the hostname has not been updated, the evaluation stops here.
 # You can now restore the original hostname of the machine
 
-echo -e "${VIOLET}Partitions Check:${NC}\n"
+echo -e "${VIOLET}Partitions Check:${NC}"
 
 # This part is an opportunity to discuss partitions! The evaluated person must give you a brief explanation of how LVM works and why it's beneficial.
 
@@ -88,12 +90,12 @@ else
 fi
 RES=$(lsblk | grep root | wc -l)
 if [ $RES -gt 0 ];then
-	echo -e "${GREEN}[OK] ✔${GRAY} root${NC}"
+	echo -e "${GREEN}[OK] ✔${GRAY} root${NC}\n"
 else
-	echo -e "${RED}[KO] ✗${GRAY} no root partition${NC}"
+	echo -e "${RED}[KO] ✗${GRAY} no root partition${NC}\n"
 fi
 
-echo -e "${VIOLET}Bonus Partitions:${NC}\n"
+echo -e "${VIOLET}Bonus Partitions:${NC}"
 
 RES=$(lsblk | grep var | wc -l)
 if [ $RES -gt 0 ];then
@@ -115,12 +117,14 @@ else
 fi
 RES=$(lsblk | grep var--log | wc -l)
 if [ $RES -gt 0 ];then
-	echo -e "${GREEN}[OK] ✔${GRAY} var--log${NC}"
+	echo -e "${GREEN}[OK] ✔${GRAY} var--log${NC}\n"
 else
-	echo -e "${RED}[KO] ✗${GRAY} no var--log${NC}"
+	echo -e "${RED}[KO] ✗${GRAY} no var--log${NC}\n"
 fi
 
+echo -e "${GRAY}Command: lsblk${NC}"
 lsblk
+echo
 
 echo -e "${GRAY}==================================================================${NC}\n"
 
@@ -132,70 +136,76 @@ echo -e "${GRAY}================================================================
 
 echo -e "${VIOLET}UFW Check:${NC}\n"
 
-echo -e "${CYAN}What is UFW? - Why is it important?${NC}\n"
+echo -e "${CYAN}What is UFW? - Why is it important?${NC}"
 echo -e "${GRAY}Add new rule to open port 8080. \nList active rules\nDelete port 8080${NC}\n"
 
 RES=$(sudo ufw status | grep -v ALLOW | grep active | wc -l)
 if [ $RES -gt 0 ];then
-        echo -e "${GREEN}YAY! Ufw is active. OK ✔${NC}\n"
+        echo -e "${GREEN}YAY! Ufw is active. OK ✔${NC}"
   else
-        echo -e "${RED}UH-OH! Not Active. KO ✗${NC}\n"
+        echo -e "${RED}UH-OH! Not Active. KO ✗${NC}"
 fi
 
 RES=$(sudo ufw status | grep 4242 | wc -l)
 if [ $RES -gt 1 ];then
-        echo -e "${GREEN}YAY! Port 4242 is open! OK ✔${NC}\n"
+        echo -e "${GREEN}YAY! Port 4242 is open! OK ✔${NC}"
   else
-        echo -e "${RED}UH-OH! Port 4242 is closed! KO ✗${NC}\n"
+        echo -e "${RED}UH-OH! Port 4242 is closed! KO ✗${NC}"
 fi
 
-echo -e "${GRAY}Port 4545 is for the Bonus.${NC}\n"
+echo -e "${GRAY}*Note: Port 4545 is for the Bonus.${NC}\n"
 
+echo -e "${GRAY}Command: sudo ufw status${NC}"
 sudo ufw status
 
 echo -e "${GRAY}==================================================================${NC}\n"
 
 echo -e "${VIOLET}SSH Check:${NC}\n"
 
-echo -e "${CYAN}What is SSH and why is it important?${NC}\n"
+echo -e "${CYAN}What is SSH and why is it important?${NC}"
 echo -e "${GRAY}Use SSH to connect with the new user created.${NC}\n"
 
 # Check if SSH is installed
 if [ -x "$(command -v ssh)" ]; then
-	echo -e "${GREEN}YAY! SSH is installed.${NC}\n"
+	echo -e "${GREEN}YAY! SSH is installed. ✔${NC}\n"
 else
-	echo -e "${RED}UH-OH! SSH is not installed.${NC}\n"
+	echo -e "${RED}UH-OH! SSH is not installed. ✗${NC}\n"
 fi
 
 echo -e "${VIOLET}SSH status check${NC}"
 if sudo service ssh status | grep -q "Active: active (running)"; then
-    echo -e "${GREEN}YAY! SSH service is running.${NC}\n"
+    echo -e "${GREEN}YAY! SSH service is running. ✔${NC}\n"
 else
-    echo -e "${RED}UH-OH! SSH service is not running.${NC}\n"
+    echo -e "${RED}UH-OH! SSH service is not running. ✗${NC}\n"
 fi
 
 # Check SSH status and port
-echo -e "${GRAY}Ssh status${NC}"
+echo -e "${VIOLET}Ssh status${NC}"
 RES=$(sudo lsof -i -P -n | grep sshd | grep LISTEN | grep 4242 | wc -l)
 if [ $RES -gt 1 ];then
-	echo -e "${GREEN}YAY! SSH service is running on port 4242.${NC}\n"
+	echo -e "${GREEN}YAY! SSH service is running on port 4242. ✔${NC}\n"
 else
-	echo -e "${RED}UH-OH! SSH service is not running on port 4242.${NC}\n"
+	echo -e "${RED}UH-OH! SSH service is not running on port 4242. ✗${NC}\n"
 fi
 
 # Check SSH root login
-echo -e "${GRAY}Root login check${NC}"
+echo -e "${VIOLET}Root login check${NC}"
 permit_root_login=$(sudo grep "^PermitRootLogin" /etc/ssh/sshd_config | awk '{print $2}')
 if [[ "$permit_root_login" == "no" ]]; then
-	echo -e "${GREEN}YAY! Root login is disabled in SSH configuration.${NC}\n"
+	echo -e "${GREEN}YAY! Root login is disabled in SSH configuration. ✔${NC}\n"
 else
-	echo -e "${RED}UH-OH! Root login is enabled in SSH configuration.${NC}\n"
+	echo -e "${RED}UH-OH! Root login is enabled in SSH configuration. ✗${NC}\n"
 fi
+
+echo -e "${GRAY}Command: sudo service ssh status${NC}"
 sudo service ssh status
-echo -e "${GRAY}==================================${NC}\n"
+echo
+echo -e "${GRAY}=====================================================================${NC}\n"
 # Display SSH Configuration
-echo -e "${GRAY}SSH Config:${NC}\n"
+echo -e "${GRAY}SSH Config:${NC}"
 cat /etc/ssh/sshd_config | grep -E '^#?PermitRootLogin'  # Display the PermitRootLogin line
+echo -e "${GRAY}Port Config:${NC}"
+cat /etc/ssh/sshd_config | grep -E '^#?Port'  # Display the Port line
 
 echo -e "${GRAY}=====================================================================${NC}\n"
 # group_name ="evaluating"
