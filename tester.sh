@@ -45,6 +45,7 @@ echo -e "${GRAY}================================================================
 echo -e "${VIOLET}PASSWORD CHECK & HOSTNAME:        ${NC}\n"
 # A password will be requested before any connection attempt on this machine. Log in with a non-root user??. Verify that the chosen password respects the rules imposed in the subject. (password criteria)
 sudo chage -l $USER
+echo
 
 # First, create a new user. Assign them a password of your choice, respecting the subject's rules. The evaluated person must now explain how they were able to implement the requested rules on their virtual machine. Normally, one or two files would have been modified.
 
@@ -57,7 +58,7 @@ echo -e "${GRAY}================================================================
 echo -e "${VIOLET}VM SETUP && PARTITIONS:        ${NC}\n"
 echo -e "${VIOLET}Chosen OS - Debian or Rocky:${NC}"
 # lsb_release -a || cat /etc/os-release
-echo -e "${GRAY}Command: hostnamectl${NC}"
+echo -e "${GRAY}*Command: hostnamectl${NC}"
 hostnamectl
 echo
 
@@ -122,7 +123,7 @@ else
 	echo -e "${RED}[KO] ✗${GRAY} no var--log${NC}\n"
 fi
 
-echo -e "${GRAY}Command: lsblk${NC}"
+echo -e "${GRAY}*Command: lsblk${NC}"
 lsblk
 echo
 
@@ -155,7 +156,7 @@ fi
 
 echo -e "${GRAY}*Note: Port 4545 is for the Bonus.${NC}\n"
 
-echo -e "${GRAY}Command: sudo ufw status${NC}"
+echo -e "${GRAY}*Command: sudo ufw status${NC}"
 sudo ufw status
 
 echo -e "${GRAY}==================================================================${NC}\n"
@@ -197,7 +198,7 @@ else
 	echo -e "${RED}UH-OH! Root login is enabled in SSH configuration. ✗${NC}\n"
 fi
 
-echo -e "${GRAY}Command: sudo service ssh status${NC}"
+echo -e "${GRAY}*Command: sudo service ssh status${NC}"
 sudo service ssh status
 echo
 echo -e "${GRAY}=====================================================================${NC}\n"
@@ -206,6 +207,7 @@ echo -e "${GRAY}SSH Config:${NC}"
 cat /etc/ssh/sshd_config | grep -E '^#?PermitRootLogin'  # Display the PermitRootLogin line
 echo -e "${GRAY}Port Config:${NC}"
 cat /etc/ssh/sshd_config | grep -E '^#?Port'  # Display the Port line
+echo -e "${GRAY}*Command: cat /etc/ssh/sshd_config${NC}"
 
 echo -e "${GRAY}=====================================================================${NC}\n"
 # group_name ="evaluating"
