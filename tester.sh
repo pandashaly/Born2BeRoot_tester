@@ -46,7 +46,7 @@ echo -e "${GRAY}================================================================
 
 echo -e "${VIOLET}GUI MODE CHECK:        ${NC}\n"
 RES=$(ls /usr/bin/*session)
-if [[ $RES =~ "dbus-run-session" ]]; then
+if [[ $RES == "/usr/bin/dbus-run-session" ]]; then
 	echo -e "${GREEN}YAY! GUI mode is disabled! OK ✔${NC}\n"
 else
 	echo -e "${RED}UH-OHH! GUI mode is enabled! KO ✗${NC}\n"
@@ -62,7 +62,6 @@ echo
 # First, create a new user. Assign them a password of your choice, respecting the subject's rules. The evaluated person must now explain how they were able to implement the requested rules on their virtual machine. Normally, one or two files would have been modified.
 
 # Now that you have a new user, ask the evaluated person to create a group named "evaluating" in front of you and assign it to this user. Finally, check that this user indeed belongs to the "evaluating" group.
-
 # what is the purpose of this password policy, and advantages or disadvantages of it.
 
 echo -e "${GRAY}==================================================================${NC}\n"
