@@ -18,7 +18,7 @@ echo -e "${CYAN}/_____/\____/_/  /_/ /_/____/_____/\___/_/ |_|\____/\____/\__/  
                                                                 
 
 if [ $USER != "root" ];then
-echo "${RED}Opps! You don't have permission. Make sure you run the command with sudo permission - (sudo bash tester.sh)${RESET}\n";
+echo -e "${RED}Opps! You don't have permission.\n Make sure you run the command with sudo permission - (sudo bash tester.sh)${RESET}\n";
 exit;
 fi
 
