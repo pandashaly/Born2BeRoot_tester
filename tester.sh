@@ -70,54 +70,54 @@ echo -e "${VIOLET}Partitions Check:${NC}\n"
 
 RES=$(lsblk | grep lvm | wc -l)
 if [ $RES -gt 1 ];then
-  echo -e "${GREEN}[OK] ✔${GRAY} lvm${NC}\n"
+  echo -e "${GREEN}[OK] ✔${GRAY} lvm${NC}"
 else
-	echo -e "${RED}[KO] ✗${GRAY} no lvm partition${NC}\n"
+	echo -e "${RED}[KO] ✗${GRAY} no lvm partition${NC}"
 fi
 RES=$(lsblk | grep home | wc -l)
 if [ $RES -gt 0 ];then
-	echo -e "${GREEN}[OK] ✔${GRAY} home${NC}\n"
+	echo -e "${GREEN}[OK] ✔${GRAY} home${NC}"
 else
-	echo -e "${RED}[KO] ✗${GRAY} no home partition${NC}\n"
+	echo -e "${RED}[KO] ✗${GRAY} no home partition${NC}"
 fi
 RES=$(lsblk | grep swap | wc -l)
 if [ $RES -gt 0 ];then
-	echo -e "${GREEN}[OK] ✔${GRAY} swap${NC}\n"
+	echo -e "${GREEN}[OK] ✔${GRAY} swap${NC}"
 else
-	echo -e "${RED}[KO] ✗${GRAY} no swap partition${NC}\n"
+	echo -e "${RED}[KO] ✗${GRAY} no swap partition${NC}"
 fi
 RES=$(lsblk | grep root | wc -l)
 if [ $RES -gt 0 ];then
-	echo -e "${GREEN}[OK] ✔${GRAY} root${NC}\n"
+	echo -e "${GREEN}[OK] ✔${GRAY} root${NC}"
 else
-	echo -e "${RED}[KO] ✗${GRAY} no root partition${NC}\n"
+	echo -e "${RED}[KO] ✗${GRAY} no root partition${NC}"
 fi
 
 echo -e "${VIOLET}Bonus Partitions:${NC}\n"
 
 RES=$(lsblk | grep var | wc -l)
 if [ $RES -gt 0 ];then
-  echo -e "${GREEN}[OK] ✔${GRAY} var${NC}\n"
+  echo -e "${GREEN}[OK] ✔${GRAY} var${NC}"
 else
-	echo -e "${RED}[KO] ✗${GRAY} no var partition${NC}\n"
+	echo -e "${RED}[KO] ✗${GRAY} no var partition${NC}"
 fi
 RES=$(lsblk | grep srv | wc -l)
 if [ $RES -gt 0 ];then
-	echo -e "${GREEN}[OK] ✔${GRAY} srv${NC}\n"
+	echo -e "${GREEN}[OK] ✔${GRAY} srv${NC}"
 else
-	echo -e "${RED}[KO] ✗${GRAY} no srv partition${NC}\n"
+	echo -e "${RED}[KO] ✗${GRAY} no srv partition${NC}"
 fi
 RES=$(lsblk | grep tmp | wc -l)
 if [ $RES -gt 0 ];then
-	echo -e "${GREEN}[OK] ✔${GRAY} tmp${NC}\n"
+	echo -e "${GREEN}[OK] ✔${GRAY} tmp${NC}"
 else
-	echo -e "${RED}[KO] ✗${GRAY} no tmp partition${NC}\n"
+	echo -e "${RED}[KO] ✗${GRAY} no tmp partition${NC}"
 fi
 RES=$(lsblk | grep var--log | wc -l)
 if [ $RES -gt 0 ];then
-	echo -e "${GREEN}[OK] ✔${GRAY} var--log${NC}\n"
+	echo -e "${GREEN}[OK] ✔${GRAY} var--log${NC}"
 else
-	echo -e "${RED}[KO] ✗${GRAY} no var--log${NC}\n"
+	echo -e "${RED}[KO] ✗${GRAY} no var--log${NC}"
 fi
 
 lsblk
