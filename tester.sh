@@ -51,6 +51,26 @@ if [[ $RES == "/usr/bin/dbus-run-session" ]]; then
 else
 	echo -e "${RED}UH-OHH! GUI mode is enabled! KO ✗${NC}\n"
 fi
+echo -e "${GRAY}This test is looking for a specific executable (dbus-run-session) in the /usr/bin/ directory.\n
+If the executable is found, it indicates that GUI mode is enabled,\n
+and if it's not found, it suggests that GUI mode is disabled.\n
+"dbus-run-session" is a command that can be used to start a D-Bus session,\n
+often associated with running graphical applications in a session.${NC}\n"
+
+# Check for Wayland
+RES=$(ps aux | grep -E '(Xwayland|wayland)')
+
+if [[ -n "$RES" ]]; then
+	echo -e "${GREEN}YAY! Wayland is not detected! GUI mode is disabled! OK ✔${NC}\n"
+else
+	echo -e "${RED}UH-OHH! Wayland is detected. GUI mode might be enabled! KO ✗${NC}\n"
+fi
+
+echo -e "${GRAY}This test the presence of Weyland.\n
+Wayland is used by default in Debian 10 and newer, older versions use Xorg by default.\n\n
+Wayland is a modern display server replacing Xorg, known for better performance and security.\n
+Checking for Wayland presence is a reliable indicator the presence of a GUI on Linux systems,\n
+especially in Debian 12 where Wayland is the default display server for GNOME desktop environment.${NC}\n"
 
 echo -e "${GRAY}==================================================================${NC}\n"
 
