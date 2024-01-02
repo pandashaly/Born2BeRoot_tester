@@ -216,10 +216,10 @@ fi
 # Check SSH status and port
 echo -e "${VIOLET}Ssh status${NC}"
 RES=$(sudo lsof -i -P -n | grep sshd | grep LISTEN | grep 4242 | wc -l)
-if [ $RES -gt 1 ];then
-	echo -e "${GREEN}YAY! SSH service is running on port 4242. ✔${NC}\n"
+if [ $RES -eq 1 ];then
+	echo -e "${GREEN}YAY! SSH service is running only on port 4242. ✔${NC}\n"
 else
-	echo -e "${RED}UH-OH! SSH service is not running on port 4242. ✗${NC}\n"
+	echo -e "${RED}UH-OH! SSH service is not running only on port 4242. ✗${NC}\n"
 fi
 
 # Check SSH root login
