@@ -17,17 +17,29 @@ echo -e "${CYAN} / /_/ / /_/ / /  / / / / __// /_/ /  __/ _, _/ /_/ / /_/ / /_  
 echo -e "${CYAN}/_____/\____/_/  /_/ /_/____/_____/\___/_/ |_|\____/\____/\__/  by pandashaly${NC}\n\n"
                                                                 
 
-# if [ $USER != "root" ];then
-#	echo "${RED}Opps! You don't have permission. Make sure you run the command with sudo permission - (sudo bash tester.sh)${RESET}\n\n";
-#	exit;
-#fi
+if [ $USER != "root" ];then
+echo "${RED}Opps! You don't have permission. Make sure you run the command with sudo permission - (sudo bash tester.sh)${RESET}\n";
+exit;
+fi
 
 echo -e "${CYAN}=^..^=   =^..^=   =^..^= ABOUT YOUR VM  =^..^=    =^..^=    =^..^=${NC}\n"
 
 echo -e "${VIOLET}What is a VM and what are the benefits of using VMs?\n${NC}"
+# A software based emulation of a physical computer system, like a computer within a computer
+# So a VM is an isolated environment separate from your main computer system and you can run
+# different OS, softwares and run applications without affecting your maing computer.
 echo -e "${VIOLET}Which OS did you chose and why?\n${NC}"
+# Subject suggests Debian because it's free and user-friendly. It's community driven and 
+# older than Rocky so it has more documentations and resources for troubleshooting.
 echo -e "${VIOLET}What's the difference between Debian and Rocky?\n${NC}"
+# Debian - community driven dev model which aims to be a universal OS - it adheres to (FPS) 
+# Free software principles -freedom to run modify and update suftwares
+# Rocky - led by Rocky entereprise foundation - it provides enterprise grade linux
+# its designed and developed to meet the demands of larger scale businesses and organizations.
 echo -e "${VIOLET}If you chose Debian, what's the difference between 'aptitude' and 'apt'?\nIf you chose Rocky, what are SELinux and DNF?${NC}\n"
+# Aptitude - more advanced and interactive while apt is simpler and more straightforward
+# Main difference - how they handle package dependencies (software needed for program to work)
+# apt has shorter and easier to remember commands.
 
 echo -e "${CYAN}=^..^=   =^..^=   =^..^=  =^..^=  =^..^=  =^..^=    =^..^=    =^..^=${NC}\n"
 echo -e "${GRAY}==================================================================${NC}\n"
@@ -138,6 +150,8 @@ echo -e "${GRAY}================================================================
 echo -e "${VIOLET}UFW Check:${NC}\n"
 
 echo -e "${CYAN}What is UFW? - Why is it important?${NC}"
+# Uncomplicated Firewall - interface that modifies the fw without compromising security
+# Used to configure which ports to allow connections and which ports to close
 echo -e "${GRAY}Add new rule to open port 8080. \nList active rules\nDelete port 8080${NC}\n"
 
 RES=$(sudo ufw status | grep -v ALLOW | grep active | wc -l)
