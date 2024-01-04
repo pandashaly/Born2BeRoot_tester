@@ -77,7 +77,7 @@ echo -e "${GRAY}================================================================
 echo -e "${VIOLET}PASSWORD CHECK & HOSTNAME:        ${NC}\n"
 
 echo -e "${VIOLET}{Password Policy:${NC}"
-echo -e "${GRAY}ssottori:${NC}\n"
+echo -e "${GRAY}$USER:${NC}\n"
 sudo chage -l $USER
 
 echo -e "${GRAY}root:${NC}\n"
@@ -85,7 +85,9 @@ sudo chage -l root
 echo
 
 echo -e "${VIOLET}GROUPS:        ${NC}\n"
+groups | tr " " "\n"
 
+echo -e "${GRAY}Create a new user add them to a group called 'evaluating'.${NC}"
 
 # First, create a new user. Assign them a password of your choice, respecting the subject's rules. The evaluated person must now explain how they were able to implement the requested rules on their virtual machine. Normally, one or two files would have been modified.
 
@@ -99,7 +101,6 @@ echo -e "${VIOLET}Chosen OS - Debian or Rocky:${NC}"
 # lsb_release -a || cat /etc/os-release
 echo -e "${GRAY}*Command: hostnamectl${NC}"
 hostnamectl
-echo
 
 echo -e "${GRAY}Change this hostname by replacing the login with yours, then reboot the machine.\n
 Command: sudo hostnamectl set-hostname <new_hostname>\n
