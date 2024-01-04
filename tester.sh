@@ -75,8 +75,13 @@ especially in Debian 12 where Wayland is the default display server for GNOME de
 echo -e "${GRAY}==================================================================${NC}\n"
 
 echo -e "${VIOLET}PASSWORD CHECK & HOSTNAME:        ${NC}\n"
-# A password will be requested before any connection attempt on this machine. Log in with a non-root user??. Verify that the chosen password respects the rules imposed in the subject. (password criteria)
+
+
+echo -e "${GRAY}ssottori:${NC}\n"
 sudo chage -l $USER
+
+echo -e "${GRAY}root:${NC}\n"
+sudo chage -l root
 echo
 
 # First, create a new user. Assign them a password of your choice, respecting the subject's rules. The evaluated person must now explain how they were able to implement the requested rules on their virtual machine. Normally, one or two files would have been modified.
@@ -93,8 +98,9 @@ echo -e "${GRAY}*Command: hostnamectl${NC}"
 hostnamectl
 echo
 
-# Change this hostname by replacing the login with yours, then restart the machine. If upon restarting, the hostname has not been updated, the evaluation stops here.
-# You can now restore the original hostname of the machine
+echo -e "${GRAY}Change this hostname by replacing the login with yours, then reboot the machine.\n
+Command: sudo hostnamectl set-hostname <new_hostname>\n
+Command: sudo reboot${NC}\n"
 
 echo -e "${VIOLET}Partitions Check:${NC}"
 
