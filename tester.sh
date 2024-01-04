@@ -76,13 +76,16 @@ echo -e "${GRAY}================================================================
 
 echo -e "${VIOLET}PASSWORD CHECK & HOSTNAME:        ${NC}\n"
 
-
+echo -e "${VIOLET}{Password Policy:${NC}"
 echo -e "${GRAY}ssottori:${NC}\n"
 sudo chage -l $USER
 
 echo -e "${GRAY}root:${NC}\n"
 sudo chage -l root
 echo
+
+echo -e "${VIOLET}GROUPS:        ${NC}\n"
+
 
 # First, create a new user. Assign them a password of your choice, respecting the subject's rules. The evaluated person must now explain how they were able to implement the requested rules on their virtual machine. Normally, one or two files would have been modified.
 
