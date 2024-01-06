@@ -282,7 +282,7 @@ echo -e "${GRAY}================================================================
 echo -e "${GRAY}=====================================================================${NC}\n"
 echo -e "${VIOLET}BONUS${NC}\n"
 echo -e "${VIOLET}Website Url:${NC}"
-http://localhost:4545/
+localhost:4545
 echo
 
 
