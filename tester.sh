@@ -18,9 +18,11 @@ echo -e "${CYAN}/_____/\____/_/  /_/ /_/____/_____/\___/_/ |_|\____/\____/\__/  
                                                                 
 
 if [ $USER != "root" ];then
-echo -e "${RED}Opps! You don't have permission.\nMake sure you run the command with sudo permission - (sudo bash tester.sh)${RESET}\n";
+echo -e "${RED}Opps! You don't have permission.\nRun the command with sudo permission - (sudo bash tester.sh)${RESET}\n";
 exit;
 fi
+
+neofetch
 
 echo -e "${CYAN}=^..^=   =^..^=   =^..^= ABOUT YOUR VM  =^..^=    =^..^=    =^..^=${NC}\n"
 
