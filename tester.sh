@@ -47,17 +47,17 @@ echo -e "${CYAN}=^..^=   =^..^=   =^..^=  =^..^=  =^..^=  =^..^=    =^..^=    =^
 echo -e "${GRAY}==================================================================${NC}\n"
 
 echo -e "${VIOLET}GUI MODE CHECK:        ${NC}\n"
-RES=$(ls /usr/bin/*session)
-if [[ $RES == "/usr/bin/dbus-run-session" ]]; then
-	echo -e "${GREEN}YAY! GUI mode is disabled! OK ✔${NC}\n"
-else
-	echo -e "${RED}UH-OHH! GUI mode is enabled! KO ✗${NC}\n"
-fi
-echo -e "${GRAY}This test is looking for a specific executable (dbus-run-session) in the /usr/bin/ directory.\n
-If the executable is found, it indicates that GUI mode is enabled,\n
-and if it's not found, it suggests that GUI mode is disabled.\n
-"dbus-run-session" is a command that can be used to start a D-Bus session,\n
-often associated with running graphical applications in a session.${NC}\n"
+#RES=$(ls /usr/bin/*session)
+#if [[ $RES == "/usr/bin/dbus-run-session" ]]; then
+#	echo -e "${GREEN}YAY! GUI mode is disabled! OK ✔${NC}\n"
+#else
+#	echo -e "${RED}UH-OHH! GUI mode is enabled! KO ✗${NC}\n"
+#fi
+#echo -e "${GRAY}This test is looking for a specific executable (dbus-run-session) in the /usr/bin/ directory.\n
+#If the executable is found, it indicates that GUI mode is enabled,\n
+#and if it's not found, it suggests that GUI mode is disabled.\n
+#"dbus-run-session" is a command that can be used to start a D-Bus session,\n
+#often associated with running graphical applications in a session.${NC}\n"
 
 # Check for Wayland
 RES=$(ps aux | grep -E '(Xwayland|wayland)')
@@ -89,7 +89,9 @@ echo
 echo -e "${VIOLET}GROUPS:        ${NC}\n"
 
 groups | tr " " "\n"
+groups
 echo
+3cho -e "${GRAY}User in these groups:${NC}"
 getent group sudo
 getent group user42
 
