@@ -288,11 +288,14 @@ echo -e "${GRAY}================================================================
 echo -e "${GRAY}=====================================================================${NC}\n"
 echo -e "${VIOLET}BONUS${NC}\n"
 echo -e "${VIOLET}Website Url:${NC}"
-localhost:4545
+echo -e "${VIOLET}localhost:4545${NC}"
 echo
-
-
-
+echo -e "${GRAY}=====================================================================${NC}\n"
+sudo systemctl status mysqld
+echo -e "${GRAY}=====================================================================${NC}\n"
+sudo service lighttpd status
+echo -e "${GRAY}=====================================================================${NC}\n"
+sudo ls -l /var/www/html
 # BONUS 
 # Partitions
 # Wordpress site
