@@ -279,8 +279,14 @@ sudo crontab -l
 echo
 echo -e "${GRAY}=====================================================================${NC}\n"
 
-# How they have set up their script to execute every 10 minutes from server launch. Once the proper functioning of the script is verified, the evaluated person must make sure that this script executes every minute. You can launch whatever you wish to ensure that the script runs correctly with dynamic values. Finally, the evaluated person must ensure that the script no longer runs at server launch, without modifying the script itself. To verify this point, the server will need to be restarted one last time. At startup, it must be verified that the script still exists in the same place, that its permissions have remained unchanged, and that it has not been modified. If any of the above points are not correct, the evaluation stops here.
 echo -e "${GRAY}=====================================================================${NC}\n"
+echo -e "${VIOLET}BONUS${NC}\n"
+echo -e "${VIOLET}Website Url:${NC}"
+http://localhost:4545/
+echo
+
+
+
 # BONUS 
 # Partitions
 # Wordpress site
