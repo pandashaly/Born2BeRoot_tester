@@ -87,10 +87,11 @@ sudo chage -l root
 echo
 
 echo -e "${VIOLET}GROUPS:        ${NC}\n"
+
 groups | tr " " "\n"
 echo
 getent group sudo
-getent gorup user42
+getent group user42
 
 echo -e "${GRAY}Create a new user add them to a group called 'evaluating'.${NC}"
 
