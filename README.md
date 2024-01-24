@@ -1,0 +1,75 @@
+`# System Tester README
+
+## Introduction
+🔍 Born to be root can be long, boring, and confusing, making it challenging to grasp the multitude of commands and configurations. In an attempt to better understand the commands, intricacies of system configurations and simplify the evaluation process for myself and other 42 students I created this tester. I hope you find it helpful! ⭐ Stars for this repo are immensely helpful and appreciated!
+
+## Usage
+🚀 This script is designed to test various aspects of your Debian virtual machine setup. It checks your system setup for specific configurations, password policies, services, UFW configuration and more. Follow the instructions below to run the tester script.
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo `
+
+1.  Run the Script:
+
+    bashCopy code
+
+    `sudo bash tester.sh`
+
+2.  Follow the On-Screen Instructions: 📋 The script will guide you through various checks and provide feedback on your system setup.
+
+Important Notes
+---------------
+
+-   Ensure you have administrative privileges to run the script. Use `sudo` as shown in the usage instructions.
+-   The script is designed for Debian. Ensure your system matches the expected environment.
+
+Additional Information
+----------------------
+
+### Neofetch Installation
+
+#### What is neofetch?
+
+Neofetch is a command-line utility that displays system information in a visually appealing way. It provides details about your OS, kernel, CPU, GPU, memory, and more, and it often includes an ASCII art representation of the distribution's logo. It's not necessary, but it's a pretty fun addition to show your evaluator what OS you chose and to show that the GUI enabled! ^_^
+
+#### Installation Instructions
+
+If `neofetch` is not already installed on your system, you can install it using the following commands:
+
+Debian/Ubuntu:
+
+bashCopy code
+
+`sudo apt-get install neofetch`
+
+Rocky Linux:
+
+bashCopy code
+
+`sudo dnf install neofetch`
+
+Mac (using Homebrew):
+
+bashCopy code
+
+`brew install neofetch`
+
+Bonus Section
+-------------
+
+-   Monitoring Script: The script checks for a monitoring script running every 10 minutes using cron. Review and update the script as needed.
+-   Website URL (Bonus): If applicable, a bonus section provides information about a website running on localhost:4545. Ensure proper setup and configuration. You need to be able to show that your free choice service is installed and running.
+
+Conclusion
+----------
+
+### To-Do List
+
+-   [x]  Add password checks to the tester.
+-   [x]  Extend Bonus section tests
+
+Feel free to contribute or provide feedback to improve this tool! 🛠️🚀 The script aims to assess your system setup based on specific criteria. Thank you for using this tester! If you encounter any errors or have suggestions, feel free to contact me or start an issue on GitHub. This tool is tailored for 42 students, and your feedback is crucial. Contributions are welcome if you want to add new tests to the script. Happy testing, and may your system setups be smooth! 🚀
+
+For any questions or issues, contact me - pandashaly. 🤖
