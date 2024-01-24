@@ -38,19 +38,9 @@ If `neofetch` is not already installed on your system, you can install it using 
 
 Debian/Ubuntu:
 
-bashCopy code
-
 `sudo apt-get install neofetch`
 
-Rocky Linux:
-
-bashCopy code
-
-`sudo dnf install neofetch`
-
 Mac (using Homebrew):
-
-bashCopy code
 
 `brew install neofetch`
 
@@ -58,7 +48,8 @@ Bonus Section
 -------------
 
 -   Monitoring Script: The script checks for a monitoring script running every 10 minutes using cron. Review and update the script as needed.
--   Website URL (Bonus): If applicable, a bonus section provides information about a website running on localhost:4545. Ensure proper setup and configuration. You need to be able to show that your free choice service is installed and running.
+-   Website URL (Bonus): If applicable, a bonus section provides information about a website.
+-   Ensure proper setup and configuration. You need to be able to show that your free choice service is installed and running.
 
 Conclusion
 ----------
