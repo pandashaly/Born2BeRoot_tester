@@ -9,8 +9,8 @@
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/your-repo.git
-   `
+   git@github.com:pandashaly/Born2BeRoot_tester.git
+   
 1.  Run the Script:
 
     `sudo bash tester.sh`
